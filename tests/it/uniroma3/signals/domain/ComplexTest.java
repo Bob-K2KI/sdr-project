@@ -1,6 +1,7 @@
-package it.uniroma3.domain;
+package it.uniroma3.signals.domain;
 
 import static org.junit.Assert.*;
+import it.uniroma3.signals.domain.Complex;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,9 +1,13 @@
-package it.uniroma3.domain;
+package it.uniroma3.signals.domain;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import it.uniroma3.signals.domain.Complex;
+import it.uniroma3.signals.domain.FileSignal;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -55,7 +59,7 @@ public class FileSignalTest {
 	public void samplesMapCache() throws IOException {
 		FileSignal signal = new FileSignal(this.wellformedFile, 3);
 		// Leggo il terzo campione
-		Complex thirdSample = signal.getSample(2);
+		signal.getSample(2);
 
 		// Mi assicuro che essendo passato dal campione 1 al terzo
 		// ho memorizzato l'inizio degli altri campioni

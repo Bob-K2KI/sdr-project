@@ -1,11 +1,16 @@
-package it.uniroma3.domain;
+package it.uniroma3.signals.domain;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.CharBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
+
+/*
+ * Implementazione di un segnale tramite lettura da file.
+ * La classe implementa il Memory Mapped File: caricando il file
+ * in memoria virtuale incrementa drasticamente le performance in lettura
+ * senza passare per il buffer di I/O
+ */
 
 public class FileSignal extends Signal {
 	private int length;
