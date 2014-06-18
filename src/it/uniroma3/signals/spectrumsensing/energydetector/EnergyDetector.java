@@ -18,7 +18,7 @@ public class EnergyDetector {
 		double noisePower = 1 / Math.pow(10, (this.SNR / 10));
 		
 		for(int i = 0; i < attempts; i++)
-			energy[i] = SignalFactory.Noise(this.SNR, 10*1000, noisePower).getEnergy();
+			energy[i] = SignalFactory.Noise(this.SNR, 1*1000, noisePower).getEnergy();
 		
 		Threshold th = new Threshold(fakeAlarmProbability);
 		
@@ -34,6 +34,7 @@ public class EnergyDetector {
 	
 	/* operazioni online */
 	public boolean detection(Signal s) {
+		System.out.println("Energia segnale: " + s.getEnergy() + " - Soglia: " + this.threshold);
 		return s.getEnergy() > this.threshold;
 	}
 	

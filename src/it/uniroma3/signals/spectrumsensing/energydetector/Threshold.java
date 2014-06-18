@@ -3,11 +3,10 @@ package it.uniroma3.signals.spectrumsensing.energydetector;
 import java.math.*;
 
 public class Threshold {
-	//probabilità di falso allarme
-	double pfa;
+	double fakeAlarmProbability;
 	
 	public Threshold(double pfa){
-		this.pfa = pfa;
+		this.fakeAlarmProbability = pfa;
 	}
 
 	public double calculateTh (double[] energy) throws Exception {
@@ -16,26 +15,28 @@ public class Threshold {
 		
 		mean = this.calculateMean(energy);
 		variance = this.calculateVariance(energy, mean);
-		threshold = mean + (2*Math.sqrt(variance)) * this.invErf(1-2*pfa);
+		threshold = mean + (2*Math.sqrt(variance)) * this.invErf(1-2*fakeAlarmProbability);
 		
 		return threshold;
 	}
 	
 	
-	public double calculateMean (double[] d){
-		int k = d.length;
+	public double calculateMean (double[] values){
 		double mean = 0;
-		for(int i = 0; i < k; i++)
-			mean += d[i];
-		return (mean/k);
+		
+		for(double value : values)
+			mean += value;
+		
+		return mean / values.length;
 	}
 	
-	public double calculateVariance (double[] d, double m){
-		int k = d.length;
+	public double calculateVariance (double[] values, double mean){
 		double variance = 0;
-		for(int i = 0; i < k; i++)
-			variance += Math.pow((d[i]-m), 2);
-		return (variance/k);
+
+		for(double value : values)
+			variance += Math.pow(value - mean, 2);
+
+		return variance / values.length;
 	}
 	
 	public double invErf(double d) throws Exception {
@@ -50,8 +51,7 @@ public class Threshold {
 				return 0;
 			}
 			BigDecimal bd = new BigDecimal(0, MathContext.UNLIMITED);
-			BigDecimal x = new BigDecimal(d * Math.sqrt(Math.PI) / 2,
-					MathContext.UNLIMITED);
+			BigDecimal x = new BigDecimal(d * Math.sqrt(Math.PI) / 2, MathContext.UNLIMITED);
 			// System.out.println(x);
 			String[] A092676 = {
 					"1",
@@ -121,6 +121,6 @@ public class Threshold {
 	}
 	
 	public void setPFA (double pfa){
-		this.pfa = pfa;
+		this.fakeAlarmProbability = pfa;
 	}
 }

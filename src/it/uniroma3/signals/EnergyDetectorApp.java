@@ -17,14 +17,17 @@ public class EnergyDetectorApp {
 	
 	public void offlineCalculations() {
 		System.out.println("############ Offline Section ############");
-		System.out.print("Inserire il SNR (in db) al quale si vuole lavorare: ");
-		this.ed = new EnergyDetector(this.in.nextDouble());
+//		System.out.print("Inserire il SNR (in db) al quale si vuole lavorare: ");
+//		this.ed = new EnergyDetector(this.in.nextDouble());
+		this.ed = new EnergyDetector(-3);
 		
-		System.out.print("Inserire la probabilità di falso allarme desiderata: ");
-		double Pfa = this.in.nextDouble();
+//		System.out.print("Inserire la probabilità di falso allarme desiderata: ");
+//		double Pfa = this.in.nextDouble();
+		double Pfa = 0.001;
 		
-		System.out.print("Inserire il numero di tentativi da effettuare per il calcolo della soglia: ");
-		int attempts = this.in.nextInt();
+//		System.out.print("Inserire il numero di tentativi da effettuare per il calcolo della soglia: ");
+//		int attempts = this.in.nextInt();
+		int attempts = 1000;
 		
 		ed.generateThreshold(attempts, Pfa);
 		
@@ -33,7 +36,15 @@ public class EnergyDetectorApp {
 	
 	public void onlineDetection() {
 		System.out.println("############ Online Section ############");
-		Signal receivedSignal = this.getOriginalSignal();
+//		Signal receivedSignal = this.getOriginalSignal();
+		System.out.print("Apro il file originario ...");
+		Signal receivedSignal = null;
+		try {
+			receivedSignal = new FileSignal("/tmp/sdr/1/output_SNR=0dB.dat", 1000);
+		} catch(IOException e) {
+			System.out.print("ERRORE");
+			System.exit(1);
+		}
 		
 		if( this.ed.detection(receivedSignal) )
 			System.out.println("Attenzione: l'utente primario sta trasmettendo");
