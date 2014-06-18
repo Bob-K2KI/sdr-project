@@ -17,36 +17,23 @@ public class EnergyDetectorApp {
 	
 	public void offlineCalculations() {
 		System.out.println("############ Offline Section ############");
-//		System.out.print("Inserire il SNR (in db) al quale si vuole lavorare: ");
-//		this.ed = new EnergyDetector(this.in.nextDouble());
-		double db = -8;
-		this.ed = new EnergyDetector(db);
+		System.out.print("Inserire il SNR (in db) al quale si vuole lavorare: ");
+		this.ed = new EnergyDetector(this.in.nextDouble());
 		
-//		System.out.print("Inserire la probabilità di falso allarme desiderata: ");
-//		double Pfa = this.in.nextDouble();
-		double Pfa = 0.001;
+		System.out.print("Inserire la probabilità di falso allarme desiderata: ");
+		double Pfa = this.in.nextDouble();
 		
-//		System.out.print("Inserire il numero di tentativi da effettuare per il calcolo della soglia: ");
-//		int attempts = this.in.nextInt();
-		int attempts = 1000;
+		System.out.print("Inserire il numero di tentativi da effettuare per il calcolo della soglia: ");
+		int attempts = this.in.nextInt();
 		
 		ed.generateThreshold(attempts, Pfa);
-//		System.exit(0);
 		
 		System.out.println("Lavorando offline e' stata generato un valore di soglia per il dato SNR di: " + ed.getThreshold());
-		System.out.println("SNR: " + db + " - Pfa: " + Pfa + "");
 	}
 	
 	public void onlineDetection() {
-//		System.out.println("############ Online Section ############");
-//		Signal receivedSignal = this.getOriginalSignal();
-		Signal receivedSignal = null;
-		try {
-			receivedSignal = new FileSignal("/tmp/sdr/1/output_SNR=-5dB.dat", 1000);
-		} catch(IOException e) {
-			System.out.print("ERRORE");
-			System.exit(1);
-		}
+		System.out.println("############ Online Section ############");
+		Signal receivedSignal = this.getOriginalSignal();
 
 		if( this.ed.detection(receivedSignal) )
 			System.out.println("Attenzione: l'utente primario sta trasmettendo");
@@ -63,18 +50,14 @@ public class EnergyDetectorApp {
 	
 	private Signal getOriginalSignal() {
 		String inputFilename;
-		int length;
 		Signal originario = null;
 		
-		System.out.print("Inserire il file originario: ");
+		System.out.print("Inserire il file originario (minimo 1000 campioni): ");
 		inputFilename = this.in.next();
-		
-		System.out.print("Inserire la quantità di campioni da leggere dal file originario: ");
-		length = this.in.nextInt();
 		
 		System.out.print("Apro il file originario ...");
 		try {
-			originario = new FileSignal(inputFilename, length);
+			originario = new FileSignal(inputFilename, 1000);
 		} catch(IOException e) {
 			System.out.print("ERRORE");
 			System.exit(1);

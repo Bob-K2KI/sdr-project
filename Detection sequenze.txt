@@ -1,0 +1,65 @@
+Sequenza 1: 
+    File: output_SNR=5dB.dat
+    SNR: 2.0 - Pfa: 0.001
+    Energia segnale: 2557.0596127453387 - Soglia: 701.1887768923024
+    Attenzione: l'utente primario sta trasmettendo
+
+    File: output_SNR=0dB.dat
+    SNR: -3.0 - Pfa: 0.001
+    Energia segnale: 4108.6367864352 - Soglia: 2217.146584284193
+    Attenzione: l'utente primario sta trasmettendo
+
+    File: output_SNR=-5dB.dat
+    SNR: -8.0 - Pfa: 0.001
+    Energia segnale: 8722.922215711946 - Soglia: 7031.105884948363
+    Attenzione: l'utente primario sta trasmettendo
+
+    File: output_SNR=-10dB.dat
+    SNR: -13.0 - Pfa: 0.001
+    Energia segnale: 22126.02597315878 - Soglia: 22232.811813306973
+    Daje forte: è un white space!
+
+
+
+Sequenza 2:
+    File: output_SNR=5dB.dat
+    SNR: 2.0 - Pfa: 0.001
+    Energia segnale: 660.8289911755905 - Soglia: 702.6012466192549
+    Daje forte: è un white space!
+
+    File: output_SNR=0dB.dat
+    SNR: -3.0 - Pfa: 0.001
+    Energia segnale: 2082.0919594067836 - Soglia: 2220.264240329685
+    Daje forte: è un white space!
+
+    File: output_SNR=-5dB.dat
+    SNR: -8.0 - Pfa: 0.001
+    Energia segnale: 6091.449490731813 - Soglia: 7021.04980267657
+    Daje forte: è un white space!
+
+    File: output_SNR=-10dB.dat
+    SNR: -13.0 - Pfa: 0.001
+    Energia segnale: 19478.44961041793 - Soglia: 22239.08412044818
+    Daje forte: è un white space!
+
+
+Sequenza 3:
+    File: output_SNR=5dB.dat
+    SNR: 2.0 - Pfa: 0.001
+    Energia segnale: 609.9273206072025 - Soglia: 701.6120148370601
+    Daje forte: è un white space!
+
+    File: output_SNR=0dB.dat
+    SNR: -3.0 - Pfa: 0.001
+    Energia segnale: 1924.2720724252094 - Soglia: 2216.4133027897433
+    Daje forte: è un white space!
+
+    File: output_SNR=-5dB.dat
+    SNR: -8.0 - Pfa: 0.001
+    Energia segnale: 5960.466000184902 - Soglia: 7015.1124960127145
+    Daje forte: è un white space!
+
+    File: output_SNR=-10dB.dat
+    SNR: -13.0 - Pfa: 0.001
+    Energia segnale: 20229.677427026432 - Soglia: 22248.184494062007
+    Daje forte: è un white space!
