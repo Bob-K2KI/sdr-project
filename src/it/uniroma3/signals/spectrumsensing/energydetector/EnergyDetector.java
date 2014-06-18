@@ -20,7 +20,15 @@ public class EnergyDetector {
 		for(int i = 0; i < attempts; i++)
 			energy[i] = SignalFactory.Noise(this.SNR, 10*1000, noisePower).getEnergy();
 		
-		//this.threshold = new Soglia(energy, fakeAlarmProbability);
+		Threshold th = new Threshold(fakeAlarmProbability);
+		
+		try {
+			this.threshold = th.calculateTh(energy);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
 	
