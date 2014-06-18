@@ -143,5 +143,15 @@ public abstract class Signal {
 		
 		return sw.process();
 	}
+	
+	
+	public double getEnergy() {
+		double energy = 0;
+		
+		for(int i = 0; i < this.getLength(); i++)
+			energy += this.getSample(i).moduloQuadro().getReale();
+		
+		return energy;
+	}
 
 }

@@ -68,5 +68,12 @@ public class ComplexTest {
 		assertEquals(1, this.zero.exp().getReale(), 0);
 		assertEquals(0, this.zero.exp().getImmaginaria(), 0);
 	}
+	
+	@Test
+	public void moduloQuadroTest() {
+		assertEquals(636.8336, this.complesso.moduloQuadro().abs(), 0);
+		assertEquals(636.8336, this.complesso.moduloQuadro().getReale(), 0);
+		assertEquals(0, this.complesso.moduloQuadro().getImmaginaria(), 0);
+	}
 
 }
