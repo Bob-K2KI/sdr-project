@@ -15,7 +15,7 @@ public class EnergyDetector {
 	/* operazioni offline */ 
 	public void generateThreshold(int attempts, double fakeAlarmProbability) {
 		double[] energy = new double[attempts];
-		double noisePower = Math.pow(10, (this.SNR / 10));
+		double noisePower = 1 / Math.pow(10, (this.SNR / 10));
 		
 		for(int i = 0; i < attempts; i++)
 			energy[i] = SignalFactory.Noise(this.SNR, 10*1000, noisePower).getEnergy();
