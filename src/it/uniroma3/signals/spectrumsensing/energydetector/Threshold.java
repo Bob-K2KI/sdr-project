@@ -1,4 +1,4 @@
-package it.uniroma3.spectrumsensing.energydetector;
+package it.uniroma3.signals.spectrumsensing.energydetector;
 
 import java.math.*;
 
