@@ -119,4 +119,8 @@ public class Threshold {
 			return bd.doubleValue();
 		}
 	}
+	
+	public void setPFA (double pfa){
+		this.pfa = pfa;
+	}
 }
