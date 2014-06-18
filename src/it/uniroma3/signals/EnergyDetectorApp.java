@@ -32,19 +32,18 @@ public class EnergyDetectorApp {
 	}
 	
 	public void onlineDetection() {
+		double detected = 0;
 		System.out.println("############ Online Section ############");
 		Signal receivedSignal = this.getOriginalSignal();
-
+/*
 		if( this.ed.detection(receivedSignal) )
 			System.out.println("Attenzione: l'utente primario sta trasmettendo");
 		else
-			System.out.println("Daje forte: è un white space!");
-//		for(int i = 0; i < 100; i++){
-//			if( this.ed.detection(receivedSignal.sliceSignal(i, 1000)) )
-//				System.out.println("Attenzione: l'utente primario sta trasmettendo");
-//			else
-//				System.out.println("Daje forte: è un white space!");
-//		}
+			System.out.println("Daje forte: è un white space!");*/
+		for(int i = 0; i < 1000; i++)
+			if( this.ed.detection(receivedSignal.sliceSignal(i, 1000)) )
+				detected += 1;
+		System.out.println("La probabilità di detection è del " + (detected/10) + "%.");
 		
 	}
 	
@@ -57,7 +56,7 @@ public class EnergyDetectorApp {
 		
 		System.out.print("Apro il file originario ...");
 		try {
-			originario = new FileSignal(inputFilename, 1000);
+			originario = new FileSignal(inputFilename, 1000000);
 		} catch(IOException e) {
 			System.out.print("ERRORE");
 			System.exit(1);
