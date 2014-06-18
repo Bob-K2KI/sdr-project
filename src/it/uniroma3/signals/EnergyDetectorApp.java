@@ -19,7 +19,8 @@ public class EnergyDetectorApp {
 		System.out.println("############ Offline Section ############");
 //		System.out.print("Inserire il SNR (in db) al quale si vuole lavorare: ");
 //		this.ed = new EnergyDetector(this.in.nextDouble());
-		this.ed = new EnergyDetector(-3);
+		double db = -8;
+		this.ed = new EnergyDetector(db);
 		
 //		System.out.print("Inserire la probabilità di falso allarme desiderata: ");
 //		double Pfa = this.in.nextDouble();
@@ -30,26 +31,33 @@ public class EnergyDetectorApp {
 		int attempts = 1000;
 		
 		ed.generateThreshold(attempts, Pfa);
+//		System.exit(0);
 		
 		System.out.println("Lavorando offline e' stata generato un valore di soglia per il dato SNR di: " + ed.getThreshold());
+		System.out.println("SNR: " + db + " - Pfa: " + Pfa + "");
 	}
 	
 	public void onlineDetection() {
-		System.out.println("############ Online Section ############");
+//		System.out.println("############ Online Section ############");
 //		Signal receivedSignal = this.getOriginalSignal();
-		System.out.print("Apro il file originario ...");
 		Signal receivedSignal = null;
 		try {
-			receivedSignal = new FileSignal("/tmp/sdr/1/output_SNR=0dB.dat", 1000);
+			receivedSignal = new FileSignal("/tmp/sdr/1/output_SNR=-5dB.dat", 1000);
 		} catch(IOException e) {
 			System.out.print("ERRORE");
 			System.exit(1);
 		}
-		
+
 		if( this.ed.detection(receivedSignal) )
 			System.out.println("Attenzione: l'utente primario sta trasmettendo");
 		else
 			System.out.println("Daje forte: è un white space!");
+//		for(int i = 0; i < 100; i++){
+//			if( this.ed.detection(receivedSignal.sliceSignal(i, 1000)) )
+//				System.out.println("Attenzione: l'utente primario sta trasmettendo");
+//			else
+//				System.out.println("Daje forte: è un white space!");
+//		}
 		
 	}
 	

@@ -18,7 +18,7 @@ public class EnergyDetector {
 		double noisePower = 1 / Math.pow(10, (this.SNR / 10));
 		
 		for(int i = 0; i < attempts; i++)
-			energy[i] = SignalFactory.Noise(this.SNR, 1*1000, noisePower).getEnergy();
+			energy[i] = SignalFactory.Noise(this.SNR, 1*1000, 1).getEnergy();
 		
 		Threshold th = new Threshold(fakeAlarmProbability);
 		

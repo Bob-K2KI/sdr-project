@@ -20,7 +20,6 @@ public class FileSignal extends Signal {
 	
 	private int[] samplesMap;
 	
-
 	public FileSignal(String filename, int length, int snr) throws IOException {
 		this(filename, length);
 		this.setSNR(snr);

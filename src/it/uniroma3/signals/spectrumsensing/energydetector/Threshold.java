@@ -14,8 +14,11 @@ public class Threshold {
 		double threshold, mean, variance;
 		
 		mean = this.calculateMean(energy);
+//		System.out.println("La media di questo rumore è " + mean);
 		variance = this.calculateVariance(energy, mean);
+//		System.out.println("La varianza di questo rumore è " + variance);
 		threshold = mean + (2*Math.sqrt(variance)) * this.invErf(1-2*fakeAlarmProbability);
+//		System.out.println("La soglia secondo questo rumore è " + threshold);
 		
 		return threshold;
 	}

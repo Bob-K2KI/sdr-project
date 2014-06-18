@@ -144,6 +144,15 @@ public abstract class Signal {
 		return sw.process();
 	}
 	
+	public Signal sliceSignal(int offset, int limit){
+		Complex[] t = new Complex[limit];
+		int from = offset*limit;
+		for(int i = 0; i < limit; i++)
+			t[i] = new Complex(this.getSample(i + from).getReale(),this.getSample(i + from).getImmaginaria()); 
+		
+		return new ArraySignal(t);
+	}
+	
 	
 	public double getEnergy() {
 		double energy = 0;
