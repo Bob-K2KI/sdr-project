@@ -40,6 +40,10 @@ public class Complex {
 		return new Complex(this.reale, - this.immaginaria);
 	}
 	
+	public Complex moduloQuadro() {
+		return this.coniugato().prodotto(this);
+	}
+	
 	public Complex somma(Complex b){
 		Complex result = new Complex(
 			this.reale + b.getReale(),
